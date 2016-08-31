@@ -32,6 +32,7 @@ app.engine('mustache', function (filePath, options, callback) {
 });
 app.set('view engine', 'mustache');
 
+// Makes the public folder accessible to mustache files as if we were in that folder.
 app.use(express.static(__dirname + '/public'));
 
 
