@@ -9,7 +9,7 @@ var sassOptions = {
     outputStyle: 'expanded'
 };
 
-gulp.task('sass', function () {
+gulp.task('compile', function () {
     return gulp
         .src(input)
         .pipe(sass(sassOptions).on('error', sass.logError))
@@ -18,11 +18,11 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function() {
     return gulp
-        .watch(input, ['sass'])
+        .watch(input, ['compile'])
         .on('change', function(event) {
             console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         });
 });
 
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['compile', 'watch']);
 

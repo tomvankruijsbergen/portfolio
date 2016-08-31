@@ -35,7 +35,7 @@ app.set('view engine', 'mustache');
 app.use(express.static(__dirname + '/public'));
 
 
-// Routes
+// Route.
 app.get('/', (req, res) => {
     res.render(
         "index",
@@ -47,7 +47,8 @@ app.get('/', (req, res) => {
     );
 });
 
-// Actually start Express
+// Actually start Express.
+// Todo: read this from some same config file.
 app.listen(3000, () => {
     console.log('Listening on port 3000');
 });
