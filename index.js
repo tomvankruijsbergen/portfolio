@@ -9,17 +9,19 @@ require('babel-core/register')({
 
 var express = require("express");
 var Mustache = require("mustache");
-var fs = require("fs");
 
-var React = require("react");
 var ReactDOMServer = require("react-dom/server");
-
 var Main = require("./app/main");
+
 
 var app = express();
 
+/*
+ Boilerplate for setting up Mustache as the engine, defining where all the .mustache files are, and assigning it to Express
+ */
 app.set('views', __dirname + "/html");
 app.engine('mustache', function (filePath, options, callback) {
+    var fs = require("fs");
     fs.readFile(filePath, function (err, content) {
         if (err) return callback(new Error(err));
 
@@ -30,7 +32,10 @@ app.engine('mustache', function (filePath, options, callback) {
 });
 app.set('view engine', 'mustache');
 
+app.use(express.static(__dirname + '/public'));
 
+
+// Routes
 app.get('/', (req, res) => {
     res.render(
         "index",
@@ -42,6 +47,7 @@ app.get('/', (req, res) => {
     );
 });
 
+// Actually start Express
 app.listen(3000, () => {
-    console.log('Example app listening on port 3000!');
+    console.log('Listening on port 3000');
 });
