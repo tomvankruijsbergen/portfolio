@@ -1,24 +1,28 @@
 $offBlack: #1e1200;
 $offGrey: #b1a89a;
 $offWhite: #fff4f0;
+//$offWhiteBackground: #fefaf9;
+$offWhiteBackground: #fff;
 $primary: #FF5722;
+$primaryFaded: #ff825b;
+$primaryFaded2: #ffe4db;
 
 $elementMargin: 3rem;
 
 
 html {
-  font-family: 'Source Sans Pro',sans-serif;
+  font-family: 'Source Sans Pro', Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-html, body, p, h1, h2 {
+html, body, p, h1, h2, h3 {
   margin:0;
   border:0;
   padding: 0;
   outline: 0;
   font-weight: 400;
 }
-html, body, #content{
+html, body, #content {
   width:100%;
   height:100%;
   font-size: 100%;
@@ -31,7 +35,9 @@ html, body, #content{
 
 h2 {
   font-size:2rem;
-
+}
+h3 {
+  font-size: 1.5rem;
 }
 
 .leaderboard {
@@ -55,9 +61,7 @@ h2 {
     font-size: 1.25rem;
     width:90%;
     max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    margin: $elementMargin * 0.5 auto $elementMargin * 0.5 auto;
     color: $offWhite;
     font-weight: 300;
   }
@@ -68,7 +72,7 @@ h2 {
     display: table;
     width: 100%;
     color:$offBlack;
-    background-color: #fff;
+    background-color: $offWhiteBackground;
 
     /*
      * Notice the minus. This is because the leaderboard is set to 100% and we (probably) want the next section
@@ -78,7 +82,7 @@ h2 {
     margin-top: 0;
 
     padding-top: $elementMargin;
-    margin-bottom: $elementMargin;
+    padding-bottom: $elementMargin;
   }
   &-title {
     margin-bottom: $elementMargin * 0.5;
@@ -96,25 +100,17 @@ h2 {
   }
 }
 
+.color-line {
+  content:"";
+  background-color: $primaryFaded;
+  height:$elementMargin * 2;
+  //opacity:0.75;
+}
+
 .projects {
-
-  $titleMargin:1.5rem;
-
   &-container {
-    &-line {
-      content:"";
-      background-color: $offGrey;
-      text-align:center;
-      width:25%;
-      height:1px;
-      margin-top:$elementMargin;
-      margin-bottom: $titleMargin;
-      margin-left:auto;
-      margin-right:auto;
-    }
-
-    padding-left:5%;
-    padding-right:5%;
+    background-color: $offWhiteBackground;
+    padding: $elementMargin;
     text-align: center;
 
     &::after {
@@ -124,7 +120,7 @@ h2 {
     }
   }
   &-title {
-    margin-bottom: $titleMargin;
+    margin-bottom: $elementMargin * 0.5;
   }
   &-container-inner {
     margin:auto;
@@ -142,14 +138,57 @@ h2 {
         /* styles for browsers larger than 960px; */
         width:50%;
       }
+
+      transition: background-color 0.25s;
+      cursor:pointer;
+      &:hover {
+        background-color: $primaryFaded2;
+      }
     }
-    & {
-      padding-left:50px;
-      padding-right:10px;
+    &-container-inner {
+      padding-left:30%;
+      padding-right:5%;
       text-align: left;
       display:table-cell;
       vertical-align: middle;
       box-sizing: border-box;
     }
+    & {
+      //height:120px;
+    }
+    &-text {
+      margin-top: $elementMargin * 0.25;
+      color:$offBlack;
+    }
+  }
+}
+
+.bottom {
+  content:""
+}
+
+.element-margin-top {
+  margin-top: $elementMargin;
+}
+.element-margin-top-half {
+  margin-top: $elementMargin * 0.5;
+}
+
+.button-primary {
+  color:$primary;
+  cursor:pointer;
+  background-color: #fff;
+  display:inline-block;
+  padding: $elementMargin * 0.25 $elementMargin * 0.5 $elementMargin * 0.25 $elementMargin * 0.5;
+  font-weight: 400;
+
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  border-radius:0.25rem;
+
+  transition: color 0.2s, border-color 0.2s;
+  &:hover {
+    color: $primaryFaded;
+    border-color:rgba(0,0,0,0.25);
   }
 }
