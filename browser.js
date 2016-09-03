@@ -14,6 +14,8 @@
  * point, or route, that can render an even smaller or customised temporary page.
  */
 
+// process.env.NODE_ENV = 'production';
+
 var React = require("react");
 var ReactDOM = require("react-dom");
 

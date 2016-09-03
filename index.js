@@ -6,6 +6,8 @@
  * This is the entry point for the server.
  */
 
+process.env.NODE_ENV = 'production';
+
 // https://babeljs.io/docs/usage/require/
 // Todo: for a production server, this should be pre-compiled.
 require('babel-core/register')({
@@ -16,7 +18,6 @@ var express = require("express");
 var Mustache = require("mustache");
 
 var app = express();
-
 
 /*
  * Boilerplate for setting up Mustache as the engine, defining where all the .mustache files are, and assigning it to Express
