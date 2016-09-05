@@ -42,6 +42,10 @@ h3 {
   font-size: 1.5rem;
 }
 
+
+
+
+
 .leaderboard {
   &-container {
     display: table;
@@ -133,7 +137,6 @@ h3 {
 
       width:100%;
       @media only screen and (min-width:800px){
-        /* styles for browsers larger than 960px; */
         width:50%;
       }
 
@@ -141,6 +144,8 @@ h3 {
       cursor:pointer;
       &:hover {
         background-color: $primaryFaded2;
+
+        box-shadow:0 1px .5px rgba(255,255,255,.13)
       }
     }
     &-container-inner {
@@ -160,6 +165,159 @@ h3 {
     }
   }
 }
+
+
+
+
+
+
+
+
+$topBarHeight: $elementMargin * 1.5;
+
+.container-topbar-offset {
+  padding-top:$topBarHeight;
+}
+.topbar {
+  &-container {
+    background-color:$primary;
+    height:$topBarHeight;
+    display:table;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:900001;
+  }
+  & {
+    position:relative;
+    display:table-cell;
+    table-layout: fixed;
+    vertical-align: middle;
+    height:100%;
+    padding-left:0;
+    padding-right: $elementMargin * 0.5;
+    color:#fff;
+  }
+  &-back {
+
+    display:table;
+    color:#fff;
+
+    font-weight: 400;
+    font-size: 1.25rem;
+
+    padding-left:$elementMargin * 0.5;
+    padding-right:$elementMargin * 0.5;
+    height:$topBarHeight;
+
+    transition: background 0.1s, color 0.1s;
+    border-radius: 0.25rem;
+    &:hover {
+      background: rgba(255,255,255,0.08);
+      box-shadow:0 1px .5px rgba(0,0,0,.05);
+      color: $offWhite;
+    }
+
+    &-image {
+      display:table-cell;
+      vertical-align:middle;
+
+      & img {
+        height:$elementMargin * 0.66;
+        vertical-align:middle;
+      }
+    }
+
+    &-text {
+      display:table-cell;
+      @media only screen and (max-width:450px) {
+        display:none;
+      }
+      padding-left: $elementMargin * 0.25;
+      vertical-align: middle;
+    }
+  }
+
+  &-title {
+    position:absolute;
+    top:50%;
+    transform:translate(-50%,-50%);
+    left:50%;
+    text-align: center;
+    white-space: pre;
+    margin: 0 auto;
+    font-weight: 300;
+  }
+}
+
+
+.widescreen-image {
+  & {
+    position:relative;
+    overflow:hidden;
+  }
+  &-text-container {
+    position:absolute;
+    top:50%;
+    width:100%;
+    text-align: center;
+    transform:translateY(-50%);
+  }
+  &-text {
+    color: $primary;
+    display:inline-block;
+    font-size: 3rem;
+    z-index:2;
+    padding:2rem;
+    background-color:rgba(255,255,255,0.8);
+    border-radius: 0.25rem;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-sizing:border-box;
+    max-width:700px;
+
+    &.undertext {
+
+      display:none;
+
+      z-index:1;
+      color:#fff;
+      left:1px;
+      top:50.5%;
+
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      &.undertext-2 {
+
+        display:none;
+
+        z-index:0;
+        color:#000;
+        left:2px;
+        top:51%;
+      }
+    }
+  }
+  &-image {
+    $height: $elementMargin * 8;
+    & {
+      margin-top:$height * 0.5;
+      width:100%;
+      transform:translateY(-50%);
+    }
+    &-container {
+      position:relative;
+      width:100%;
+      height:$height;
+      overflow: hidden;
+    }
+  }
+}
+
+
 
 .bottom {
   content:""
@@ -188,71 +346,6 @@ h3 {
   &:hover {
     color: $primaryFaded;
     border-color:rgba(0,0,0,0.25);
-  }
-}
-
-
-.topbar {
-  &-container {
-    background-color:$primary;
-    display:table;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-  }
-  & {
-    position:relative;
-    display:table-cell;
-    table-layout: fixed;
-    vertical-align: middle;
-    padding-top:$elementMargin * 0.5;
-    padding-bottom:$elementMargin * 0.5;
-    padding-left:$elementMargin * 0.5;
-    padding-right: $elementMargin * 0.5;
-    color:#fff;
-  }
-  &-back {
-    $height:30px;
-
-    display:table;
-    color:#fff;
-
-    height:$height;
-
-    font-weight: 300;
-    font-size: 1.25rem;
-
-    padding: $elementMargin * 0.25;
-    margin:-($elementMargin * 0.25);
-
-    transition: background 0.1s, color 0.1s;
-    border-radius: 0.25rem;
-    &:hover {
-      background: rgba(255,255,255,0.08);
-      color: $offWhite;
-    }
-
-    &-image {
-      display:table-cell;
-      // This seems necessary to set explicitly, instead of just to 100%, to prevent a weird render bug in Chrome.
-      height:$height;
-    }
-    &-text {
-      display:table-cell;
-      padding-left: $elementMargin * 0.25;
-      vertical-align: middle;
-    }
-  }
-  
-  &-title {
-    position:absolute;
-    top:50%;
-    transform:translate(-50%,-50%);
-    left:50%;
-    text-align: center;
-    white-space: pre;
-    margin: 0 auto;
   }
 }
 
