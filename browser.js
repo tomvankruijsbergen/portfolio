@@ -20,11 +20,15 @@ var React = require("react");
 var ReactDOM = require("react-dom");
 
 var ReactRouter = require("react-router");
+var ReactRouterScroll = require("react-router-scroll");
 var Router = ReactRouter.Router;
 var Routes = require("./app/routes");
 
-ReactDOM.render((
-    <Router history={ReactRouter.browserHistory}>
-        {Routes}
-    </Router>
-), document.getElementById("content"));
+ReactDOM.render(
+    (
+        <Router history={ReactRouter.browserHistory} render={ReactRouter.applyRouterMiddleware(ReactRouterScroll.useScroll())}>
+            {Routes}
+        </Router>
+    ),
+    document.getElementById("content")
+);

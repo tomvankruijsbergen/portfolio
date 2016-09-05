@@ -9,7 +9,7 @@ var Link = ReactRouter.Link;
 
 var MainContainer = (props) => {
     return (
-        <div className="container">
+        <div className="container-root">
             <div className="leaderboard-container">
                 <div className="leaderboard">
                     <h1 className="leaderboard-title">Tom van Kruijsbergen</h1>

@@ -8,7 +8,7 @@ var TopBar = require("../view/topbar");
 
 var ProjectContainer = (props) => {
     return (
-        <div className="project">
+        <div className="container-root">
             <TopBar/>
         </div>
     )

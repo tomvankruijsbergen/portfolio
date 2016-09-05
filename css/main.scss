@@ -26,7 +26,7 @@ html, body, #content {
   font-size: 100%;
 }
 
-.content-react {
+.content-react, .container-root {
   position: relative;
   height:100%;
 }
@@ -196,6 +196,9 @@ h3 {
   &-container {
     background-color:$primary;
     display:table;
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
   }
   & {
