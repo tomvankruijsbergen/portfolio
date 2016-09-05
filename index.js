@@ -63,7 +63,7 @@ app.use( (req, res, next) => {
         } else if (renderProps) {
             var reactString = ReactDOMServer.renderToString(React.createElement(RouterContext, renderProps));
             res.status(200).render(
-                "index",
+                "index", // The name of the mustache file.
                 {
                     view: {
                         react: reactString

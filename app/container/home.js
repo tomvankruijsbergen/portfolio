@@ -4,6 +4,9 @@
 
 var React = require("react");
 
+var ReactRouter = require('react-router');
+var Link = ReactRouter.Link;
+
 var MainContainer = (props) => {
     return (
         <div className="container">
@@ -13,9 +16,9 @@ var MainContainer = (props) => {
                     <p className="leaderboard-text">
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
                     </p>
-                    <div className="button-primary">
+                    <Link to="/project" className="button-primary">
                         See projects
-                    </div>
+                    </Link>
                 </div>
             </div>
             <div className="aboutme-container">
