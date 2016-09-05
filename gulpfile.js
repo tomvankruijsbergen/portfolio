@@ -1,7 +1,10 @@
 var cssInput = './css/**/*.scss';
 var cssOutput = './public/';
 
-var jsInput = './app/**/*.js';
+var jsInputs = [
+    './app/**/*.js',
+    './browser.js'
+];
 var jsOutput = './public/';
 
 var gulp = require('gulp');
@@ -24,7 +27,9 @@ gulp.task("compile-css", function () {
 });
 
 gulp.task("compile-js", function() {
-    return browserify('browser.js')
+    return browserify('browser.js', {
+        baseDir: __dirname
+    })
         .transform("babelify", {presets: ["es2015", "react"]})
         .transform("uglifyify", {global:true})
         .bundle()
@@ -37,11 +42,13 @@ gulp.task('watch', function() {
         .on('change', function(event) {
             console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
         });
+    jsInputs.forEach((jsInput) => {
+        gulp.watch(jsInput, ['compile-js'])
+            .on('change', function(event) {
+                console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+            });
+    });
 
-    gulp.watch(jsInput, ['compile-js'])
-        .on('change', function(event) {
-            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        });
 });
 
 gulp.task('compile', ['compile-js', 'compile-css']);

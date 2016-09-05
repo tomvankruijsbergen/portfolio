@@ -42,19 +42,38 @@ app.set('view engine', 'mustache');
 app.use(express.static(__dirname + '/public'));
 
 
-// Route. Main is the component that we'll be pre-rendering.
+/*
+ * Now render the route. Because react router already routes, we'll send that all the routes.
+ */
+var React = require("react");
 var ReactDOMServer = require("react-dom/server");
-var Main = require("./app/main");
 
-app.get('/', (req, res) => {
-    res.render(
-        "index",
-        {
-            view: {
-                react: ReactDOMServer.renderToString(Main())
-            }
+var ReactRouter = require("react-router");
+var match = ReactRouter.match;
+var RouterContext = ReactRouter.RouterContext;
+
+var Routes = require("./app/routes");
+
+app.use( (req, res, next) => {
+    match({ routes: Routes, location: req.url }, (error, redirectLocation, renderProps) => {
+        if (error) {
+            res.status(500).send(error.message)
+        } else if (redirectLocation) {
+            res.redirect(302, redirectLocation.pathname + redirectLocation.search)
+        } else if (renderProps) {
+            var reactString = ReactDOMServer.renderToString(React.createElement(RouterContext, renderProps));
+            res.status(200).render(
+                "index",
+                {
+                    view: {
+                        react: reactString
+                    }
+                }
+            );
+        } else {
+            res.status(404).send('Not found')
         }
-    );
+    });
 });
 
 

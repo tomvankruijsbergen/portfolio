@@ -19,6 +19,12 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 
-var Main = require("./app/main");
+var ReactRouter = require("react-router");
+var Router = ReactRouter.Router;
+var Routes = require("./app/routes");
 
-ReactDOM.render(Main(), document.getElementById("content"));
+ReactDOM.render((
+    <Router history={ReactRouter.browserHistory}>
+        {Routes}
+    </Router>
+), document.getElementById("content"));

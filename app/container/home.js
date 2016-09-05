@@ -1,12 +1,12 @@
 /**
- * Created by tomvankruijsbergen on 31/08/16.
+ * Created by tomvankruijsbergen on 05/09/16.
  */
 
 var React = require("react");
 
-var Main = (props) => {
+var MainContainer = (props) => {
     return (
-        <div className="content-react">
+        <div className="container">
             <div className="leaderboard-container">
                 <div className="leaderboard">
                     <h1 className="leaderboard-title">Tom van Kruijsbergen</h1>
@@ -99,4 +99,4 @@ var Main = (props) => {
         </div>
     )
 };
-module.exports = Main;
+module.exports = MainContainer;
