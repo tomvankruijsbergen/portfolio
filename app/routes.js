@@ -10,12 +10,12 @@ var ProjectContainer = require("./container/project");
 
 // Here, programmatically add the routes from the store.
 var ProjectRoutes = [
-    <Route path="project" component={ProjectContainer}/>
+    <Route key="project" path="project" component={ProjectContainer}/>
 ];
 
 var Routes = (
     <Route path="/" component={ApplicationContainer}>
-        <IndexRoute component={HomeContainer}/>
+        <IndexRoute key="index" component={HomeContainer}/>
         {ProjectRoutes}
     </Route>
 );

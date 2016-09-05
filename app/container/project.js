@@ -4,10 +4,12 @@
 
 var React = require("react");
 
+var TopBar = require("../view/topbar");
+
 var ProjectContainer = (props) => {
     return (
         <div className="project">
-
+            <TopBar/>
         </div>
     )
 };
