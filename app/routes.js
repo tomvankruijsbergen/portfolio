@@ -1,12 +1,12 @@
-var React = require("react");
-var ReactRouter = require("react-router");
+const React = require("react");
+const ReactRouter = require("react-router");
 
-var Route = ReactRouter.Route;
-var IndexRoute = ReactRouter.IndexRoute;
+const Route = ReactRouter.Route;
+const IndexRoute = ReactRouter.IndexRoute;
 
-var ApplicationContainer = require("./container/application");
-var HomeContainer = require("./container/home");
-var ProjectContainer = require("./container/project");
+const ApplicationContainer = require("./container/application");
+const HomeContainer = require("./container/home");
+const ProjectContainer = require("./container/project");
 
 // Here, programmatically add the routes from the store.
 var ProjectRoutes = [
@@ -14,9 +14,9 @@ var ProjectRoutes = [
 ];
 
 var Routes = (
-    <Route path="/" component={ApplicationContainer}>
-        <IndexRoute key="index" component={HomeContainer}/>
-        {ProjectRoutes}
-    </Route>
+        <Route path="/" component={ApplicationContainer}>
+            <IndexRoute key="index" component={HomeContainer}/>
+            {ProjectRoutes}
+        </Route>
 );
 module.exports = Routes;

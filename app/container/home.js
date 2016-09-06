@@ -2,12 +2,14 @@
  * Created by tomvankruijsbergen on 05/09/16.
  */
 
-var React = require("react");
+const React = require("react");
 
-var ReactRouter = require('react-router');
-var Link = ReactRouter.Link;
+const ReactRouter = require('react-router');
+const Link = ReactRouter.Link;
 
-var MainContainer = (props) => {
+const ReactRedux = require('react-redux');
+
+const HomeContainer = (props) => {
     return (
         <div className="container-root">
             <div className="leaderboard-container">
@@ -102,4 +104,13 @@ var MainContainer = (props) => {
         </div>
     )
 };
-module.exports = MainContainer;
+
+const ConnectedHomeContainer = ReactRedux.connect(
+    (state, ownProps) => {
+        return {}
+    },
+    (dispatch, ownProps) => {
+        return {}
+    }
+)(HomeContainer);
+module.exports = ConnectedHomeContainer;

@@ -16,19 +16,26 @@
 
 // process.env.NODE_ENV = 'production';
 
-var React = require("react");
-var ReactDOM = require("react-dom");
+const React = require("react");
+const ReactDOM = require("react-dom");
 
-var ReactRouter = require("react-router");
-var ReactRouterScroll = require("react-router-scroll");
-var Router = ReactRouter.Router;
-var Routes = require("./app/routes");
+const ReactRouter = require("react-router");
+const ReactRouterScroll = require("react-router-scroll");
+const Router = ReactRouter.Router;
+const Routes = require("./app/routes");
+
+const ReactRedux = require("react-redux");
+const Provider = ReactRedux.Provider;
+
+const store = require("./app/store/store");
 
 ReactDOM.render(
     (
-        <Router history={ReactRouter.browserHistory} render={ReactRouter.applyRouterMiddleware(ReactRouterScroll.useScroll())}>
-            {Routes}
-        </Router>
+        <Provider store={store}>
+            <Router history={ReactRouter.browserHistory} render={ReactRouter.applyRouterMiddleware(ReactRouterScroll.useScroll())}>
+                {Routes}
+            </Router>
+        </Provider>
     ),
     document.getElementById("content")
 );

@@ -14,10 +14,10 @@ require('babel-core/register')({
     presets: ['react']
 });
 
-var express = require("express");
-var Mustache = require("mustache");
+const express = require("express");
+const Mustache = require("mustache");
 
-var app = express();
+const app = express();
 
 /*
  * Boilerplate for setting up Mustache as the engine, defining where all the .mustache files are, and assigning it to Express
@@ -45,23 +45,38 @@ app.use(express.static(__dirname + '/public'));
 /*
  * Now render the route. Because react router already routes, we'll send that all the routes.
  */
-var React = require("react");
-var ReactDOMServer = require("react-dom/server");
+const React = require("react");
+const ReactDOMServer = require("react-dom/server");
 
-var ReactRouter = require("react-router");
-var match = ReactRouter.match;
-var RouterContext = ReactRouter.RouterContext;
+const ReactRouter = require("react-router");
+const RouterContext = ReactRouter.RouterContext;
 
-var Routes = require("./app/routes");
+const Routes = require("./app/routes");
+
+
+const ReactRedux = require("react-redux");
+const Provider = ReactRedux.Provider;
+
+const store = require("./app/store/store");
+
 
 app.use( (req, res, next) => {
-    match({ routes: Routes, location: req.url }, (error, redirectLocation, renderProps) => {
+    ReactRouter.match({ routes: Routes, location: req.url }, (error, redirectLocation, renderProps) => {
         if (error) {
             res.status(500).send(error.message)
         } else if (redirectLocation) {
             res.redirect(302, redirectLocation.pathname + redirectLocation.search)
         } else if (renderProps) {
-            var reactString = ReactDOMServer.renderToString(React.createElement(RouterContext, renderProps));
+            var reactString = ReactDOMServer.renderToString(
+
+                /*
+                 * This is not JSX syntax because we'll have to compile this file with babel too,
+                 * and we'll do that in the future.
+                 */
+                React.createElement(Provider, {store:store},
+                    React.createElement(RouterContext, renderProps)
+                )
+            );
             res.status(200).render(
                 "index", // The name of the mustache file.
                 {

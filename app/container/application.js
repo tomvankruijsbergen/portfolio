@@ -2,9 +2,9 @@
  * Created by tomvankruijsbergen on 31/08/16.
  */
 
-var React = require("react");
+const React = require("react");
 
-var ApplicationContainer = (props) => {
+const ApplicationContainer = (props) => {
     return (
         <div className="content-react">
             {props.children}
