@@ -25,9 +25,7 @@ const ProjectContainer = (props) => {
             </div>
             <div className="container-topbar-offset">
                 <div className="widescreen-image">
-                    <div className="widescreen-image-image-container">
-                        <img className="widescreen-image-image" src="images/test1.jpg"/>
-                    </div>
+                    <div style={{background: "url('images/test1.jpg') no-repeat scroll center center transparent", backgroundSize:"cover", height:"400px"}}></div>
                     <div className="widescreen-image-text-container">
                         <h1 className="widescreen-image-text">Kik Chatbot</h1>
                     </div>

@@ -6,10 +6,10 @@ $primaryFaded: #ff825b;
 $primaryFaded2: #ffe4db;
 
 $elementMargin: 3rem;
-
+$maxCenterContentWidth: 15 * $elementMargin;
 
 html {
-  font-family: 'Source Sans Pro', Helvetica Neue, sans-serif;
+  font-family: 'Open Sans', Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,6 +43,14 @@ h3 {
 }
 
 
+.clearfloat {
+  &::after {
+    display: block;
+    content:"";
+    clear:both;
+  }
+}
+
 
 
 
@@ -66,7 +74,7 @@ h3 {
   &-text {
     font-size: 1.25rem;
     width:90%;
-    max-width: 700px;
+    max-width: $maxCenterContentWidth;
     margin: $elementMargin * 0.5 auto $elementMargin * 0.5 auto;
     color: $offWhite;
     font-weight: 300;
@@ -75,7 +83,6 @@ h3 {
 
 .aboutme {
   &-container {
-    display: table;
     width: 100%;
     color:$offBlack;
     background-color: #fff;
@@ -90,36 +97,78 @@ h3 {
     margin-bottom: $elementMargin * 0.5;
   }
   & {
-    display: table-cell;
-    vertical-align: middle;
+
   }
   &-text {
     text-align: left;
     margin-left: auto;
     margin-right: auto;
     width:90%;
-    max-width: 700px;
+    max-width: $maxCenterContentWidth;
+  }
+}
+
+.profile-links {
+  &-container {
+    background-color:$primary;
+    padding-top:$elementMargin;
+    padding-bottom:$elementMargin;
+  }
+
+  & {
+    display:table;
+    vertical-align: middle;
+    width:100%;
+  }
+
+  &-text-container {
+    display:table-cell;
+    width:50%;
+    vertical-align: middle;
+
+    padding-right: $elementMargin * 0.25;
+  }
+  &-images-container {
+    display:table-cell;
+    width:50%;
+    vertical-align: middle;
+
+    padding-left: $elementMargin * 0.25;
+  }
+
+  &-image {
+    fill: #fff;
+    width: $elementMargin;
+    height: $elementMargin;
+    margin-right: $elementMargin * 0.25;
+
+    transition: fill 0.2s;
+    &:hover {
+      fill: $primaryFaded2;
+    }
+  }
+
+  &-text {
+    font-weight: 300;
+    text-align: right;
+    color: $offWhite;
   }
 }
 
 .color-line {
   content:"";
-  background-color: $primaryFaded;
-  height:$elementMargin * 2;
+  background-color: $primary;
+  height:10px;
   //opacity:0.75;
 }
 
 .projects {
   &-container {
+    @extend .clearfloat;
+
     background-color: #fff;
     padding: $elementMargin;
     text-align: center;
-
-    &::after {
-      display: block;
-      content:"";
-      clear:both;
-    }
   }
   &-title {
     margin-bottom: $elementMargin * 0.5;
