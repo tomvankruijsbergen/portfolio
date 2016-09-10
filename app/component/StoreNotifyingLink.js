@@ -8,7 +8,7 @@
  * notifying the store before going to the new link.
  *
  * Todo: this does not catch manual previous/next actions, and should probably be somewhere else.
- * Where can this be? Perhaps a catch-all store dispatcher in the root react object.
+ * Where can this be? Perhaps a catch-all store dispatcher in the root react object?
  */
 const React = require("react");
 const ReactRouter = require("react-router");
@@ -37,9 +37,6 @@ const StoreNotifyingLink = (props, context) => {
 
 StoreNotifyingLink.propTypes = {
     to: React.PropTypes.string.isRequired,
-};
-StoreNotifyingLink.contextTypes = {
-    router: React.PropTypes.object
 };
 
 module.exports = StoreNotifyingLink;

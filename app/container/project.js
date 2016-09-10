@@ -6,9 +6,6 @@ const React = require("react");
 
 const ReactRedux = require('react-redux');
 
-const actions = require("../store/actions");
-const store = require("../store/store");
-
 const StoreNotifyingLink = require("../component/StoreNotifyingLink");
 
 const ProjectContainer = (props, context) => {

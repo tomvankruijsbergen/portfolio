@@ -12,8 +12,4 @@ const ApplicationContainer = (props, context) => {
     )
 };
 
-ApplicationContainer.contextTypes = {
-    router: React.PropTypes.object
-};
-
 module.exports = ApplicationContainer;
