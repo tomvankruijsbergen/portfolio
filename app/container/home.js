@@ -9,7 +9,21 @@ const Link = ReactRouter.Link;
 
 const ReactRedux = require('react-redux');
 
+const ProjectSingle = require("../component/projectsingle");
+
 const HomeContainer = (props) => {
+    var projects = props.projects || [];
+    var projectViews = projects.map((item) => {
+        return <ProjectSingle
+            key={item.id}
+            url={item.url}
+            title={item.title}
+            text={item.preview.text}
+            image={item.preview.image}
+            imageOver={item.preview.imageOver}
+        />
+    });
+
     return (
         <div className="container-root">
             <div className="leaderboard-container">
@@ -73,48 +87,7 @@ const HomeContainer = (props) => {
             <div className="projects-container">
                 <h2 className="projects-title">Things I worked on</h2>
                 <div className="projects-container-inner">
-                    <Link to="/project" className="projects-single-container">
-                        <div className="projects-single-image-container">
-                            <img className="projects-single-image-over" src="images/test2.png"/>
-                            <img className="projects-single-image" src="images/test2_original.png"/>
-                        </div>
-                        <div className="projects-single-text-container">
-                            <h3>Project 1</h3>
-                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                        </div>
-                    </Link>
-
-                    <Link to="/project" className="projects-single-container">
-                        <div className="projects-single-image-container">
-                            <img className="projects-single-image-over" src="images/test2.png"/>
-                            <img className="projects-single-image" src="images/test2_original.png"/>
-                        </div>
-                        <div className="projects-single-text-container">
-                            <h3>Project 1</h3>
-                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                        </div>
-                    </Link>
-                    <Link to="/project" className="projects-single-container">
-                        <div className="projects-single-image-container">
-                            <img className="projects-single-image-over" src="images/test2.png"/>
-                            <img className="projects-single-image" src="images/test2_original.png"/>
-                        </div>
-                        <div className="projects-single-text-container">
-                            <h3>Project 1</h3>
-                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                        </div>
-                    </Link>
-                    <Link to="/project" className="projects-single-container">
-                        <div className="projects-single-image-container">
-                            <img className="projects-single-image-over" src="images/test2.png"/>
-                            <img className="projects-single-image" src="images/test2_original.png"/>
-                        </div>
-                        <div className="projects-single-text-container">
-                            <h3>Project 1</h3>
-                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                        </div>
-                    </Link>
-
+                    {projectViews}
                 </div>
 
             </div>
@@ -125,7 +98,9 @@ const HomeContainer = (props) => {
 
 const ConnectedHomeContainer = ReactRedux.connect(
     (state, ownProps) => {
-        return {}
+        return {
+            projects: state.projects
+        }
     },
     (dispatch, ownProps) => {
         return {}

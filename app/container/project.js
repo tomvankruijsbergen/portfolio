@@ -17,7 +17,7 @@ const ProjectContainer = (props) => {
                     <h3 className="topbar-title">Tom van Kruijsbergen</h3>
                     <Link to="/" className="topbar-back">
                         <div className="topbar-back-image">
-                            <img type="image/svg" src="images/arrow-left-white.svg"/>
+                            <img type="image/svg" src="/images/arrow-left-white.svg"/>
                         </div>
                         <div className="topbar-back-text">Back</div>
                     </Link>
@@ -25,7 +25,7 @@ const ProjectContainer = (props) => {
             </div>
             <div className="container-topbar-offset">
                 <div className="widescreen-image">
-                    <div style={{background: "url('images/test1.jpg') no-repeat scroll center center transparent", backgroundSize:"cover", height:"400px"}}></div>
+                    <div style={{background: "url('/images/test1.jpg') no-repeat scroll center center transparent", backgroundSize:"cover", height:"400px"}}></div>
                     <div className="widescreen-image-text-container">
                         <h1 className="widescreen-image-text">Kik Chatbot</h1>
                     </div>
