@@ -18,9 +18,9 @@ const HomeContainer = (props) => {
                     <p className="leaderboard-text">
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
                     </p>
-                    <Link to="/project" className="button-primary">
+                    <a href="#projects" className="button-primary">
                         See projects
-                    </Link>
+                    </a>
                 </div>
             </div>
             <div className="aboutme-container">
@@ -34,7 +34,7 @@ const HomeContainer = (props) => {
                 <div className="profile-links">
                     <div className="profile-links-text-container">
                         <h3 className="profile-links-text">
-                            Check me out on
+                            Get in touch
                         </h3>
                     </div>
                     <div className="profile-links-images-container">
@@ -73,71 +73,50 @@ const HomeContainer = (props) => {
             <div className="projects-container">
                 <h2 className="projects-title">Things I worked on</h2>
                 <div className="projects-container-inner">
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 1</h3>
-                                <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                            </div>
+                    <Link to="/project" className="projects-single-container">
+                        <div className="projects-single-image-container">
+                            <img className="projects-single-image-over" src="images/test2.png"/>
+                            <img className="projects-single-image" src="images/test2_original.png"/>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 2</h3>
-                                <p className="projects-single-text">Quisque feugiat, justo posuere egestas aliquet, neque eros ornare dui, sit amet ultrices mauris neque at ligula. Curabitur dolor erat, rutrum sed eros at, porttitor malesuada odio.</p>
-                            </div>
+                        <div className="projects-single-text-container">
+                            <h3>Project 1</h3>
+                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 3</h3>
-                                <p className="projects-single-text">Suspendisse quis feugiat lorem, vel euismod justo. Proin pretium turpis lorem, quis convallis nibh porta quis. Integer venenatis purus ipsum.</p>
-                            </div>
+                    </Link>
+
+                    <Link to="/project" className="projects-single-container">
+                        <div className="projects-single-image-container">
+                            <img className="projects-single-image-over" src="images/test2.png"/>
+                            <img className="projects-single-image" src="images/test2_original.png"/>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 4</h3>
-                                <p className="projects-single-text">Mauris ut feugiat metus. Praesent at ultrices orci, sed rhoncus quam. Sed convallis, arcu ut maximus semper, felis tellus facilisis enim, ac ultrices velit ante at purus.</p>
-                            </div>
+                        <div className="projects-single-text-container">
+                            <h3>Project 1</h3>
+                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 5</h3>
-                                <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
-                            </div>
+                    </Link>
+                    <Link to="/project" className="projects-single-container">
+                        <div className="projects-single-image-container">
+                            <img className="projects-single-image-over" src="images/test2.png"/>
+                            <img className="projects-single-image" src="images/test2_original.png"/>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 6</h3>
-                                <p className="projects-single-text">Quisque feugiat, justo posuere egestas aliquet, neque eros ornare dui, sit amet ultrices mauris neque at ligula. Curabitur dolor erat, rutrum sed eros at, porttitor malesuada odio.</p>
-                            </div>
+                        <div className="projects-single-text-container">
+                            <h3>Project 1</h3>
+                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 7</h3>
-                                <p className="projects-single-text">Suspendisse quis feugiat lorem, vel euismod justo. Proin pretium turpis lorem, quis convallis nibh porta quis. Integer venenatis purus ipsum.</p>
-                            </div>
+                    </Link>
+                    <Link to="/project" className="projects-single-container">
+                        <div className="projects-single-image-container">
+                            <img className="projects-single-image-over" src="images/test2.png"/>
+                            <img className="projects-single-image" src="images/test2_original.png"/>
                         </div>
-                    </div>
-                    <div className="projects-single-container">
-                        <div className="projects-single-container-inner">
-                            <div className="projects-single">
-                                <h3>Project 8</h3>
-                                <p className="projects-single-text">Mauris ut feugiat metus. Praesent at ultrices orci, sed rhoncus quam. Sed convallis, arcu ut maximus semper, felis tellus facilisis enim, ac ultrices velit ante at purus.</p>
-                            </div>
+                        <div className="projects-single-text-container">
+                            <h3>Project 1</h3>
+                            <p className="projects-single-text">Nam ullamcorper aliquet magna, interdum lacinia tellus scelerisque et. Cras vel ligula ac mi molestie bibendum. Fusce nec accumsan dolor. Proin vitae tellus rutrum, gravida est feugiat, venenatis velit.</p>
                         </div>
-                    </div>
+                    </Link>
+
                 </div>
+
             </div>
             <div className="bottom"></div>
         </div>

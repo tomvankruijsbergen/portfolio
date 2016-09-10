@@ -1,9 +1,16 @@
+$black: #000;
+$white: #fff;
 $offBlack: #1e1200;
-$offGrey: #b1a89a;
+$offBlack2: #6a5c5c;
+//$offGrey: #b1a89a;
+$offGrey: #9e8888;
 $offWhite: #fff4f0;
-$primary: #FF5722;
+
+//$primary: #FF5722;
+$primary: #eb4410;
 $primaryFaded: #ff825b;
 $primaryFaded2: #ffe4db;
+$primaryFaded3: #fffbf9;
 
 $elementMargin: 3rem;
 $maxCenterContentWidth: 15 * $elementMargin;
@@ -60,7 +67,7 @@ h3 {
     width: 100%;
     height: 100%;
     min-height: 500px;
-    color:#FFF;
+    color:$white;
     background-color: $primary;
   }
   & {
@@ -84,8 +91,7 @@ h3 {
 .aboutme {
   &-container {
     width: 100%;
-    color:$offBlack;
-    background-color: #fff;
+    background-color: $white;
 
     margin-top: 0;
 
@@ -104,6 +110,7 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     width:90%;
+    color:$offBlack2;
     max-width: $maxCenterContentWidth;
   }
 }
@@ -137,7 +144,7 @@ h3 {
   }
 
   &-image {
-    fill: #fff;
+    fill: $white;
     width: $elementMargin;
     height: $elementMargin;
     margin-right: $elementMargin * 0.25;
@@ -164,11 +171,14 @@ h3 {
 
 .projects {
   &-container {
-    @extend .clearfloat;
 
-    background-color: #fff;
-    padding: $elementMargin;
+    background-color: $white;
     text-align: center;
+
+    padding: $elementMargin * 0.5;
+    @media only screen and (min-width:600px) {
+      padding: $elementMargin;
+    }
   }
   &-title {
     margin-bottom: $elementMargin * 0.5;
@@ -176,41 +186,101 @@ h3 {
   &-container-inner {
     margin:auto;
     max-width:1500px;
+    @extend .clearfloat;
   }
+
   &-single {
+    $innerHeight: 200px;
+
+    $breakPointOnePerLine: 600px;
+    $breakPointTwoPerLineSmall: 900px;
+    $breakPointTwoPerLineLarge: 1100px;
+
     &-container {
-      display:table;
-      height:200px;
-      float:left;
+      color:$black;
+      text-align: left;
       box-sizing: border-box;
 
+      float:left;
+      display:table;
+      height: $innerHeight;
+
       width:100%;
-      @media only screen and (min-width:800px){
+      padding: $elementMargin * 0.25;
+      @media only screen and (min-width:$breakPointOnePerLine) {
+        padding: $elementMargin * 0.5;
+      }
+      @media only screen and (min-width:$breakPointTwoPerLineSmall) {
+        padding: $elementMargin * 0.25;
         width:50%;
       }
+      @media only screen and (min-width:$breakPointTwoPerLineLarge) {
+        padding: $elementMargin * 0.5;
+      }
+
 
       transition: background-color 0.25s;
       cursor:pointer;
       &:hover {
-        background-color: $primaryFaded2;
+        background-color: $primaryFaded3;
+        box-shadow:0 1px .5px rgba(255,255,255,.13);
 
-        box-shadow:0 1px .5px rgba(255,255,255,.13)
+        & .projects-single-image-over {
+          opacity:0;
+        }
+        // Experiment.
+        /*
+        background-color: $primary;
+        color:$white;
+        & .projects-single-text {
+          color:$offWhite;
+        }
+        */
       }
     }
-    &-container-inner {
-      padding-left:30%;
-      padding-right:5%;
-      text-align: left;
+    &-image-container {
       display:table-cell;
       vertical-align: middle;
-      box-sizing: border-box;
+      position: relative;
+
+      width: $innerHeight * 0.5;
+      @media only screen and (min-width:$breakPointOnePerLine) {
+        width: $innerHeight;
+      }
+      @media only screen and (min-width:$breakPointTwoPerLineSmall) {
+        width: $innerHeight * 0.5;
+      }
+      @media only screen and (min-width:$breakPointTwoPerLineLarge) {
+        width: $innerHeight;
+      }
     }
-    & {
-      //height:120px;
+    &-image {
+      &, &-over {
+        width:100%;
+      }
+
+      &-over {
+        position:absolute;
+
+        transition: opacity 0.2s;
+      }
     }
     &-text {
-      margin-top: $elementMargin * 0.25;
-      color:$offBlack;
+      &-container {
+        vertical-align: middle;
+        display:table-cell;
+
+        height:100%;
+
+        overflow: hidden;
+        padding-left: $elementMargin * 0.5;
+        text-align: left;
+        box-sizing: border-box;
+      }
+      & {
+        margin-top: $elementMargin * 0.25;
+        color:$offBlack2;
+      }
     }
   }
 }
@@ -246,12 +316,12 @@ $topBarHeight: $elementMargin * 1.5;
     height:100%;
     padding-left:0;
     padding-right: $elementMargin * 0.5;
-    color:#fff;
+    color:$white;
   }
   &-back {
 
     display:table;
-    color:#fff;
+    color:$white;
 
     font-weight: 400;
     font-size: 1.25rem;
@@ -325,30 +395,6 @@ $topBarHeight: $elementMargin * 1.5;
     box-sizing:border-box;
     max-width:700px;
 
-    &.undertext {
-
-      display:none;
-
-      z-index:1;
-      color:#fff;
-      left:1px;
-      top:50.5%;
-
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-
-      &.undertext-2 {
-
-        display:none;
-
-        z-index:0;
-        color:#000;
-        left:2px;
-        top:51%;
-      }
-    }
   }
   &-image {
     $height: $elementMargin * 8;
@@ -382,7 +428,7 @@ $topBarHeight: $elementMargin * 1.5;
 .button-primary {
   color:$primary;
   cursor:pointer;
-  background-color: #fff;
+  background-color: $white;
   display:inline-block;
   padding: $elementMargin * 0.25 $elementMargin * 0.5 $elementMargin * 0.25 $elementMargin * 0.5;
   font-weight: 400;
