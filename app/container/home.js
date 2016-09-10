@@ -4,16 +4,13 @@
 
 const React = require("react");
 
-const ReactRouter = require('react-router');
-const Link = ReactRouter.Link;
-
 // https://github.com/component/ease
 // https://www.npmjs.com/package/scroll-into-view
 const scrollIntoView = require('scroll-into-view');
 
 const ReactRedux = require('react-redux');
 
-const ProjectSingle = require("../component/projectsingle");
+const ProjectSingle = require("../component/ProjectSingle");
 
 const HomeContainer = (props) => {
     var projects = props.projects || [];

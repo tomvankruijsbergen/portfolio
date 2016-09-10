@@ -3,13 +3,12 @@
  */
 
 const React = require("react");
-const ReactRouter = require("react-router");
 
-const Link = ReactRouter.Link;
+const StoreNotifyingLink = require("./StoreNotifyingLink");
 
 const ProjectSingleComponent = (props) => {
     return (
-        <Link to={props.url} className="projects-single-container">
+        <StoreNotifyingLink to={props.url} className="projects-single-container">
             <div className="projects-single-image-container">
                 <img className="projects-single-image-over" src={props.imageOver}/>
                 <img className="projects-single-image" src={props.image}/>
@@ -18,7 +17,7 @@ const ProjectSingleComponent = (props) => {
                 <h3>{props.title}</h3>
                 <p className="projects-single-text">{props.text}</p>
             </div>
-        </Link>
+        </StoreNotifyingLink>
     )
 };
 

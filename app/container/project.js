@@ -4,23 +4,32 @@
 
 const React = require("react");
 
-const ReactRouter = require("react-router");
-const Link = ReactRouter.Link;
-
 const ReactRedux = require('react-redux');
 
-const ProjectContainer = (props) => {
+const actions = require("../store/actions");
+const store = require("../store/store");
+
+const StoreNotifyingLink = require("../component/StoreNotifyingLink");
+
+const ProjectContainer = (props, context) => {
     return (
         <div className="container-root">
             <div className="topbar-container">
                 <div className="topbar">
                     <h3 className="topbar-title">Tom van Kruijsbergen</h3>
-                    <Link to="/" className="topbar-back">
+
+                    <StoreNotifyingLink to="/" className="topbar-back" onClick={(event) => {
+                        if (props.previousPath === "/") {
+                            context.router.goBack();
+                            event.preventDefault();
+                        }
+                    }}>
                         <div className="topbar-back-image">
                             <img type="image/svg" src="/images/arrow-left-white.svg"/>
                         </div>
                         <div className="topbar-back-text">Back</div>
-                    </Link>
+                    </StoreNotifyingLink>
+
                 </div>
             </div>
             <div className="container-topbar-offset">
@@ -34,9 +43,15 @@ const ProjectContainer = (props) => {
         </div>
     )
 };
+ProjectContainer.contextTypes = {
+    router: React.PropTypes.object
+};
+
 const ConnectedProjectContainer = ReactRedux.connect(
     (state, ownProps) => {
-        return {}
+        return {
+            previousPath: state.previousPath
+        }
     },
     (dispatch, ownProps) => {
         return {}

@@ -6,6 +6,7 @@ const Redux = require("redux");
 
 // For initial population. We could load this dynamically from a JSON file here.
 const initialState = {
+    previousPath: undefined,
     projects: [
         {
             id: 1,
@@ -42,11 +43,18 @@ initialState.projects = [].concat(
     })
 );
 
+const Actions = require("./actions");
+
 const reducer = (state, action) => {
     if (state === undefined) {
         return initialState;
     }
-    return state;
+
+    var newState = JSON.parse(JSON.stringify(state));
+    if (action.type === Actions.names.URL_CHANGE) {
+        newState.previousPath = action.currentPath;
+    }
+    return newState;
 };
 
 const store = Redux.createStore(reducer);

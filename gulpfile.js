@@ -15,17 +15,17 @@ var uglifyify = require('uglifyify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 
-var fs = require('fs');
-
-var sassOptions = {
-    errLogToConsole: true,
-    outputStyle: 'expanded'
-};
-
 gulp.task("compile-css", function () {
     return gulp
         .src(cssInput)
-        .pipe(sass(sassOptions).on('error', sass.logError))
+        .pipe(
+            sass(
+                {
+                    errLogToConsole: true,
+                    outputStyle: 'expanded'
+                }
+            ).on('error', sass.logError)
+        )
         .pipe(gulp.dest(cssOutput));
 });
 
@@ -53,9 +53,6 @@ var b = {
     }
 };
 
-//b.instance.on('update', b.bundle);
-//b.bundle();
-
 
 gulp.task("compile-js", function() {
     return b.bundle();
@@ -69,7 +66,6 @@ gulp.task('watch', ['compile'], function() {
     });
 });
 
-//gulp.task('compile', ['compile-css', 'compile-js']);
 gulp.task('compile', ['compile-css', 'compile-js']);
 
 gulp.task('default', ['watch']);
