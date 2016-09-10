@@ -4,6 +4,7 @@ $offBlack: #1e1200;
 $offBlack2: #6a5c5c;
 //$offGrey: #b1a89a;
 $offGrey: #9e8888;
+$offGreyFaded: #faf6f3;
 $offWhite: #fff4f0;
 
 //$primary: #FF5722;
@@ -224,7 +225,7 @@ h3 {
 
       cursor:pointer;
       &:hover {
-        background-color: $primaryFaded3;
+        background-color: $offGreyFaded;
         box-shadow:0 1px .5px rgba(255,255,255,.13);
 
         & .projects-single-image-over {
