@@ -4,3 +4,6 @@
 node_modules
 public/*.css
 public/*.js
+
+# temporarily, so we can store psd's somewhere without worry
+psd

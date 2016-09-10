@@ -196,6 +196,8 @@ h3 {
     $breakPointTwoPerLineSmall: 900px;
     $breakPointTwoPerLineLarge: 1100px;
 
+    $animationTime: 0.2s;
+
     &-container {
       color:$black;
       text-align: left;
@@ -204,6 +206,8 @@ h3 {
       float:left;
       display:table;
       height: $innerHeight;
+
+      transition: padding $animationTime, width $animationTime, background-color $animationTime;
 
       width:100%;
       padding: $elementMargin * 0.25;
@@ -218,8 +222,6 @@ h3 {
         padding: $elementMargin * 0.5;
       }
 
-
-      transition: background-color 0.25s;
       cursor:pointer;
       &:hover {
         background-color: $primaryFaded3;
@@ -243,6 +245,7 @@ h3 {
       vertical-align: middle;
       position: relative;
 
+      transition: width $animationTime;
       width: $innerHeight * 0.5;
       @media only screen and (min-width:$breakPointOnePerLine) {
         width: $innerHeight;
@@ -260,9 +263,8 @@ h3 {
       }
 
       &-over {
+        transition: opacity $animationTime;
         position:absolute;
-
-        transition: opacity 0.2s;
       }
     }
     &-text {
