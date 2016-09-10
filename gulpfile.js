@@ -33,9 +33,9 @@ var b = {
     instance: watchify(
         browserify('./browser.js', {
             baseDir: __dirname,
-            fullPaths: true, // required to be true only for watchify
-            cache: {},
-            packageCache: {}
+            fullPaths: true, // for watchify
+            cache: {}, // for watchify
+            packageCache: {} // for watchify
         })
         .transform("babelify", {presets: ["es2015", "react"]})
         .transform("uglifyify", {global:true})
@@ -45,6 +45,7 @@ var b = {
         return b.instance.bundle()
             .on('error', function(err) {
                 console.log(err.toString());
+                // Marks the process as done, allows Gulp to start watching again, otherwise it would just be stuck here
                 this.emit("end");
             })
             .pipe(source('main.js'))
