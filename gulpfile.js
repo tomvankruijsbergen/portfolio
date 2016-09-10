@@ -12,7 +12,10 @@ var sass = require('gulp-sass');
 
 var browserify = require('browserify');
 var uglifyify = require('uglifyify');
+var watchify = require('watchify');
 var source = require('vinyl-source-stream');
+
+var fs = require('fs');
 
 var sassOptions = {
     errLogToConsole: true,
@@ -26,32 +29,47 @@ gulp.task("compile-css", function () {
         .pipe(gulp.dest(cssOutput));
 });
 
-gulp.task("compile-js", function() {
-    return browserify('browser.js', {
-        baseDir: __dirname
-    })
+var b = {
+    instance: watchify(
+        browserify('./browser.js', {
+            baseDir: __dirname,
+            fullPaths: true, // required to be true only for watchify
+            cache: {},
+            packageCache: {}
+        })
         .transform("babelify", {presets: ["es2015", "react"]})
         .transform("uglifyify", {global:true})
-        .bundle()
-        .pipe(source('main.js'))
-        .pipe(gulp.dest(jsOutput));
+    ),
+
+    bundle: () => {
+        return b.instance.bundle()
+            .on('error', function(err) {
+                console.log(err.toString());
+                this.emit("end");
+            })
+            .pipe(source('main.js'))
+            .pipe(gulp.dest(jsOutput));
+    }
+};
+
+//b.instance.on('update', b.bundle);
+//b.bundle();
+
+
+gulp.task("compile-js", function() {
+    return b.bundle();
 });
 
-gulp.task('watch', function() {
-    gulp.watch(cssInput, ['compile-css'])
-        .on('change', function(event) {
-            console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        });
+gulp.task('watch', ['compile'], function() {
+    gulp.watch(cssInput, ['compile-css']);
+
     jsInputs.forEach((jsInput) => {
         gulp.watch(jsInput, ['compile-js'])
-            .on('change', function(event) {
-                console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-            });
     });
-
 });
 
-gulp.task('compile', ['compile-js', 'compile-css']);
+//gulp.task('compile', ['compile-css', 'compile-js']);
+gulp.task('compile', ['compile-css', 'compile-js']);
 
-gulp.task('default', ['compile', 'watch']);
+gulp.task('default', ['watch']);
 
