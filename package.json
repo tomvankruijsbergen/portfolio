@@ -35,6 +35,7 @@
     "react-router": "^2.7.0",
     "react-router-scroll": "^0.3.2",
     "redux": "^3.5.2",
+    "scroll-into-view": "^1.7.1",
     "uglifyify": "^3.0.2",
     "vinyl-source-stream": "^1.1.0"
   }

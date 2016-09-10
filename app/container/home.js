@@ -7,6 +7,10 @@ const React = require("react");
 const ReactRouter = require('react-router');
 const Link = ReactRouter.Link;
 
+// https://github.com/component/ease
+// https://www.npmjs.com/package/scroll-into-view
+const scrollIntoView = require('scroll-into-view');
+
 const ReactRedux = require('react-redux');
 
 const ProjectSingle = require("../component/projectsingle");
@@ -32,7 +36,13 @@ const HomeContainer = (props) => {
                     <p className="leaderboard-text">
                         At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
                     </p>
-                    <a href="#projects" className="button-primary">
+                    <a href="#projects"
+                       className="button-primary"
+                       onClick={(event) => {
+                           var projectContainer = document.getElementsByClassName("projects-container")[0];
+                           scrollIntoView(projectContainer);
+                           event.preventDefault();
+                       }}>
                         See projects
                     </a>
                 </div>
