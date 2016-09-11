@@ -13,6 +13,11 @@ $primaryFaded: #ff825b;
 $primaryFaded2: #ffe4db;
 $primaryFaded3: #fffbf9;
 
+// For gradients.
+//$primaryHueAdjusted: #eb6210;
+$primaryHueAdjusted: #eb5d10;
+//$primaryHueAdjusted: #eb7710;
+
 $elementMargin: 3rem;
 $maxCenterContentWidth: 15 * $elementMargin;
 
@@ -70,6 +75,7 @@ h3 {
     min-height: 500px;
     color:$white;
     background-color: $primary;
+    background-image: radial-gradient(circle at 50% 100%, $primaryHueAdjusted 0%, $primary 50%);
   }
   & {
     display: table-cell;
@@ -118,9 +124,11 @@ h3 {
 
 .profile-links {
   &-container {
-    background-color:$primary;
     padding-top:$elementMargin;
     padding-bottom:$elementMargin;
+
+    background-color:$primary;
+    background-image: radial-gradient(ellipse farthest-corner at 50% 50%, $primaryHueAdjusted 0%, $primary 100%);
   }
 
   & {
