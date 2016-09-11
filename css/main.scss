@@ -128,7 +128,7 @@ h3 {
     padding-bottom:$elementMargin;
 
     background-color:$primary;
-    background-image: radial-gradient(ellipse farthest-corner at 50% 70%, $primaryHueAdjusted 0%, $primary 100%);
+    background-image: radial-gradient(ellipse farthest-corner at 50% 70%, $primaryHueAdjusted 0%, $primary 50%);
   }
 
   & {
