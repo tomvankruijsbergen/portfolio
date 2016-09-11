@@ -29,14 +29,10 @@ const ProjectContainer = (props, context) => {
 
                 </div>
             </div>
-            <div className="container-topbar-offset">
-                <div className="widescreen-image">
-                    <div style={{background: "url('/images/test1.jpg') no-repeat scroll center center transparent", backgroundSize:"cover", height:"400px"}}></div>
-                    <div className="widescreen-image-text-container">
-                        <h1 className="widescreen-image-text">Kik Chatbot</h1>
-                    </div>
-                </div>
-            </div>
+
+            {props.children}
+
+            <div className="bottom"></div>
         </div>
     )
 };

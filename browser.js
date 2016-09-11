@@ -32,8 +32,10 @@ const store = require("./app/store/store");
 ReactDOM.render(
     (
         <Provider store={store}>
-            <Router history={ReactRouter.browserHistory} render={ReactRouter.applyRouterMiddleware(ReactRouterScroll.useScroll())}>
-                {Routes}
+            <Router
+                history={ReactRouter.browserHistory}
+                routes={Routes}
+                render={ReactRouter.applyRouterMiddleware(ReactRouterScroll.useScroll())}>
             </Router>
         </Provider>
     ),

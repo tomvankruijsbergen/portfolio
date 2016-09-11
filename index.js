@@ -6,7 +6,7 @@
  * This is the entry point for the server.
  */
 
-process.env.NODE_ENV = 'production';
+// process.env.NODE_ENV = 'production';
 
 // https://babeljs.io/docs/usage/require/
 // Todo: for a production server, this should be pre-compiled.

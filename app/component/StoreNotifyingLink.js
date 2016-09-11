@@ -5,10 +5,10 @@
 /*
  * This component exists because React Router has no built-in way of knowing what the history is.
  * Therefore, we wrap all the in-project links into this one, so that this one can take care of
- * notifying the store before going to the new link.
+ * saving the previous link in the store. We can use this for smart back buttons.
  *
  * Todo: this does not catch manual previous/next actions, and should probably be somewhere else.
- * Where can this be? Perhaps a catch-all store dispatcher in the root react object?
+ * Where can this be? Perhaps a catch-all store listener in the root react object?
  */
 const React = require("react");
 const ReactRouter = require("react-router");

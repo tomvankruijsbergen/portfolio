@@ -96,9 +96,7 @@ const HomeContainer = (props) => {
                 <div className="projects-container-inner">
                     {projectViews}
                 </div>
-
             </div>
-            <div className="bottom"></div>
         </div>
     )
 };
