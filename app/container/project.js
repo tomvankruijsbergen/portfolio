@@ -31,8 +31,6 @@ const ProjectContainer = (props, context) => {
             </div>
 
             {props.children}
-
-            <div className="bottom"></div>
         </div>
     )
 };

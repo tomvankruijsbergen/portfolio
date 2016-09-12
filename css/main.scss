@@ -226,12 +226,12 @@ h3 {
         background-color: $offGreyFaded;
         box-shadow:0 1px .5px rgba(255,255,255,.13);
 
-        & .projects-single-image-over {
+        & .projects-single-image {
           opacity:0;
         }
         // Experiment.
         /*
-        background-color: $primary;
+        background-color: $primary;twibfy_mono.png
         color:$white;
         & .projects-single-text {
           color:$offWhite;
@@ -261,7 +261,7 @@ h3 {
         width:100%;
       }
 
-      &-over {
+      & {
         transition: opacity $animationTime;
         position:absolute;
       }
@@ -400,7 +400,7 @@ $topBarHeight: $elementMargin * 1.5;
     text-align: center;
     font-size: 3rem;
     color: $primary;
-    padding-top: $elementMargin * 0.5;
+    padding-top: $elementMargin;
   }
 
   &-stats {
@@ -417,6 +417,57 @@ $topBarHeight: $elementMargin * 1.5;
     &-container {
       margin: $elementMargin * 0.5 auto 0 auto;
       max-width: $maxCenterContentWidth;
+    }
+  }
+}
+
+
+.side-by-side-images {
+  & {
+    width:90%;
+    max-width: $maxCenterContentWidth;
+    margin: $elementMargin auto 0 auto;
+  }
+  &-separator {
+    content: "";
+    display:none;
+    width: 5%;
+  }
+  &-image {
+    display:inline-block;
+    width:100%;
+  }
+
+  @media only screen and (min-width:500px) {
+    &-separator {
+      display:inline-block;
+    }
+    &-image {
+      width:47.5%;
+    }
+  }
+}
+
+.simple-text {
+  & {
+    max-width: $maxCenterContentWidth;
+    margin: 0 auto;
+  }
+  &-container {
+    margin-top: $elementMargin;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: $offBlack2;
+  }
+
+  & a {
+    border-bottom: 2px solid rgba($primary, 1);
+    color: inherit;
+
+    transition: color 0.1s, border-bottom-color 0.1s;
+    &:hover {
+      color: $primary;
+      border-bottom-color: transparent;
     }
   }
 }

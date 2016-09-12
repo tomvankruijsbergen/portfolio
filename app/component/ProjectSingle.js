@@ -10,8 +10,8 @@ const ProjectSingleComponent = (props) => {
     return (
         <StoreNotifyingLink to={props.url} className="projects-single-container">
             <div className="projects-single-image-container">
-                <img className="projects-single-image-over" src={props.imageOver}/>
                 <img className="projects-single-image" src={props.image}/>
+                <img className="projects-single-image-over" src={props.imageOver}/>
             </div>
             <div className="projects-single-text-container">
                 <h3>{props.title}</h3>

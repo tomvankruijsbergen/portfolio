@@ -9,39 +9,25 @@ const initialState = {
     previousPath: undefined,
     projects: [
         {
-            id: 1,
             title: "Kik Chatbot",
             url: "/projects/kik-chatbot",
             preview: {
-                image: "/images/test2_original.png",
-                imageOver: "/images/test2.png",
+                image: "/images/test2.png",
+                imageOver: "/images/test2_original.png",
                 text: "A chat bot within Kik that makes jokes, talks about himself, and knows a lot of games."
             }
         },
         {
-            id: 2,
-            title: "Example project",
-            url: "/projects",
+            title: "Twibfy",
+            url: "/projects/twibfy",
             preview: {
-                image: "/images/test2_original.png",
-                imageOver: "/images/test2.png",
-                text: "An example project. Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion pea peanut soko zucchini."
+                image: "/images/twibfy/preview_mono.png",
+                imageOver: "/images/twibfy/preview_color.png",
+                text: "An inspirational platform and marketplace for creative professionals."
             }
         }
     ]
 };
-
-// Temp code, to populate a bunch of projects quickly.
-initialState.projects = [].concat(
-    initialState.projects[0],
-    [0,1,2,3,4,5,6].map((item) => {
-        var fakeProject = initialState.projects[1];
-        var result = Object.assign({}, fakeProject);
-        result.id = fakeProject.id + item;
-        result.url = fakeProject.url + "/" + item;
-        return result;
-    })
-);
 
 const Actions = require("./actions");
 

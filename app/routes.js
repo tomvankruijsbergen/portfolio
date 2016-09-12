@@ -1,41 +1,16 @@
 const React = require("react");
 const ReactRouter = require("react-router");
 
-const Route = ReactRouter.Route;
-const IndexRoute = ReactRouter.IndexRoute;
-
-const ApplicationContainer = require("./container/application");
-// const HomeContainer = require("./container/home");
-// const ProjectContainer = require("./container/project");
-
 const store = require("./store/store");
 
 // Here, programmatically add the routes from the store.
-var projects = store.getState().projects;
-
-/*
-const ProjectRoutes = {
-    childRoutes: [
-        {
-            path: 'kik-chatbot',
-            //component: require("./container/projects/kikchatbot"),
-            component: ProjectContainer,
-        }
-    ]
-};
-*/
-
-/*
-var ProjectRoutes = projects.map((item) => {
-    return <Route key={item.url} path={item.url} component={ProjectContainer}/>
-});
-*/
+// var projects = store.getState().projects;
 
 const AllRoutes = {
     childRoutes: [
         {
             path: '/',
-            component: ApplicationContainer,
+            component: require("./container/application"),
             getIndexRoute: function(partialNextState, callback) {
                 callback(null, {
                     component: require("./container/home"),
@@ -51,6 +26,10 @@ const AllRoutes = {
                                 {
                                     path: "kik-chatbot",
                                     component: require("./container/projects/kikchatbot"),
+                                },
+                                {
+                                    path: "twibfy",
+                                    component: require("./container/projects/twibfy"),
                                 }
                             ])
                         }
@@ -61,12 +40,3 @@ const AllRoutes = {
     ]
 };
 module.exports = AllRoutes;
-/*
-var Routes = (
-        <Route path="/" component={ApplicationContainer}>
-            <IndexRoute component={HomeContainer}/>
-            <Route path={"projects"} component={ProjectContainer} routes={ProjectRoutes}/>
-        </Route>
-);
-module.exports = Routes;
-*/
