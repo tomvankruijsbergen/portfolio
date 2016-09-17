@@ -16,7 +16,7 @@ const HomeContainer = (props) => {
     var projects = props.projects || [];
     var projectViews = projects.map((item) => {
         return <ProjectSingle
-            key={item.id}
+            key={item.url}
             url={item.url}
             title={item.title}
             text={item.preview.text}
